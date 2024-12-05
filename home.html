@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CakeShop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+      *{
+        font-family: 'Times New Roman', Times, serif;
+      }
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        a{
+          text-decoration: none;
+        }
+        .round-image-container {
+          border-radius: 50%;
+          width: 180px; 
+          height: 180px; 
+          overflow: hidden;
+        }
+
+        .round-image-container img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+       } 
+        li{
+        list-style: none;
+       }
+       .round-image-container{
+        background-color: var(--color-black);
+          color: var(--color-white);
+          transition: scale 0.08s ease-in, opacity 0.25s ease-in, filter 0.25s ease-in;
+          &:hover{
+            scale: 1.05;
+          }
+       }
+       button{
+        background-color: transparent;
+        border: transparent;
+       }
+       .nav-item
+        {
+          background-color: var(--color-black);
+          color: var(--color-white);
+          transition: scale 0.25s ease-in, opacity 0.25s ease-in, filter 0.25s ease-in;
+          &:hover{
+            scale: 1.2;
+          }
+        }
+        .card:hover {
+            transform: scale(1.04);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        
+        h1{
+          font-size: xx-large;
+        }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container-fluid">
+          <img src="./cake shop images/Red_and_Yellow_Catering_Flat_Illustrative_Food_Place_Logo-removebg-preview.png" alt="" height="80" width="90">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" style="background-color: white;">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav" style="margin-left: 50%;">
+          <li class="nav-item" >
+          <a class="nav-link active" aria-current="page" href="about.html" style="color: white;"><i class="fa-regular fa-address-card"></i>&nbsp;&nbsp;About Us</a>
+          </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <li class="nav-item" >
+          <a class="nav-link" href="contact.html" style="color: white;"><i class="fa-regular fa-address-book"></i>&nbsp;&nbsp;Contact US</a>
+          </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html" style="color: white;">
+                <i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;
+                <span id="cartCount" class="badge bg-warning">0</span>
+            </a>
+        </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"  style="color: white;">
+                  Dropdown link
+              </a>
+            <ul class="dropdown-menu">
+              <li><button onclick="window.location.href='#D1'"><span style="font-size: 15px;">Brownie Cakes</span></button></li>
+              <br>
+              <li><button onclick="window.location.href='#D2'"><span style="font-size: 15px;">Chocolate Cakes</span></button></li>
+              <br>
+              <li><button onclick="window.location.href='#D3'"><span style="font-size: 15px;">Red Velvet Cakes</span></button></li>
+              <br>
+              <li><button onclick="window.location.href='#D4'"><span style="font-size: 15px;">Black & White Forest</span></button></li>
+              </ul>
+                </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      
+          <li class="nav-item" >
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border: none; background-color: transparent;"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;Logout</button>
+        </li>
+        </ul>
+        </div>
+      </div>   
+        </nav>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><b>Logout Confirmation</b></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <b> Are you sure, you want to logout!</b>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="logout-button"><a href="index.html" style="color: white;">Logout</a></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="./cake shop images/pexels-mr-photographer-549209752-28159490.jpg" class="d-block w-100" alt="..." height="600">
+              <div class="carousel-caption" style="margin-bottom: 5%;">
+                <h3>Cakes World...</h3>
+                <br>
+                <p>Imagine a freshly baked cake emerging from the oven, golden brown with a warm, sugary aroma filling the air. Its soft, spongy layers are carefully stacked, waiting to be spread with creamy frosting or rich ganache.</p>
+              </div>
+              <div class="search-bar-container" style="position: absolute; top: 35%; left: 50%; transform: translate(-50%, -50%); width: 30%; border-radius: 20px;">
+                <form onsubmit="return validateForm()">
+                <input type="text" class="form-control" placeholder="Search..." aria-label="Search" style="background-color: transparent; border: 1px solid white; color: white; border-radius: 10px; padding: 5px; margin-bottom: 20px;" required>
+              <center>
+                <button type="submit" style="border: none; border-radius: 10px; background-color: rgba(255, 255, 255, 0.2); color: white; padding: 8px 10px; cursor: pointer;">
+                Search Here
+                </button>
+              </center>
+        </form>
+      </div>
+    </div>
+   </div>
+   <br>
+   <center><h2 class="section-title" style="font-size: 45px; color: rgb(5, 5, 125);">Cakes World ...</h2></center>
+   <br>
+   <center><p class="px-4"><span style="color: rgb(108, 23, 23); font-family: 'Times New Roman', Times, serif;">Imagine a freshly baked cake emerging from the oven, golden brown with a warm, sugary aroma filling the air. Its soft, spongy layers are carefully stacked, waiting to be spread with creamy frosting or rich ganache. a slice of happiness that brings people together with its sweet, comforting flavors and artful design.</span></p></center>
+    <br>
+   <div class="round-images-container" style="display: flex; gap: 50px; margin-left: 6.5%;">
+     <div class="round-image-container">
+       <img src="./cake shop images/brownie1.jpg" alt="Round Image">
+     </div>
+     <div class="round-image-container">
+       <img src="./cake shop images/brownie.jpg" alt="Round Image">
+     </div>
+     <div class="round-image-container">
+       <img src="./cake shop images/red 2.jpg" alt="Round Image">
+     </div>
+     <div class="round-image-container">
+       <img src="./cake shop images/white5.jpg" alt="Round Image">
+     </div>
+     <div class="round-image-container">
+       <img src="./cake shop images/vanila4.jpg" alt="Round Image">
+     </div>
+     <div class="round-image-container">
+       <img src="./cake shop images/cheese1.jpg" alt="Round Image">
+     </div>
+   </div>
+   <br>
+   <center><p id="D1">There’s something irresistibly indulgent about a brownie cake—a dessert that combines the best of both worlds. Imagine the rich, fudgy decadence of a classic brownie perfectly balanced with the soft, airy texture of a cake. It’s the ultimate treat for chocolate lovers, offering layers of flavor and texture in every bite.</p></center>
+   <center><p style="color: rgb(111, 0, 139); margin-left: 2%;">This dessert isn’t just a sweet treat-it’s a heartfelt indulgence that brings comfort and joy with every slice.</p></center>
+  <hr>
+   <center><button style="font-size: large;"><h1 style="font-family: 'Times New Roman', Times, serif; color: rgb(98, 6, 6);">Brownie Cake</h1></button></center>
+   <hr>
+   <br>
+   <div class="container">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
+      <div class="col-md-4">
+        <div class="card">
+            <img src="./cake shop images/brownie1.jpg" class="card-img-top" alt="Brownie Cake">
+            <div class="card-body text-center">
+                <h5 class="card-title">Brownie Cake</h5>
+                <h5 style="color: rgb(24, 105, 24);"><b><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;250/-</b></h5>
+                <p style="color: blue;">Rich and indulgent Brownie cake with layers of Brownie goodness.</p>  
+                <h4><span style="font-size: medium;">Rattings</span>&nbsp;&nbsp;<span style="color: rgb(255, 217, 0); font-size: medium;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span></h4>            
+                <button class="btn btn-primary" onclick="addToCart(1, 'Brownie Cake', 250, './cake shop images/brownie1.jpg')" style="width: 45%; font-size: small;"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Add to Cart</button>
+                &nbsp;&nbsp;&nbsp;&nbsp; 
+                <a href="#" class="btn btn-primary" style="width: 45%; font-size: small;"><i class="fa-solid fa-basket-shopping"></i>&nbsp;&nbsp;Buy Now</a>
+        </div>
+    </div>
+    </div>
+      <div class="col-md-4">
+        <div class="card">
+            <img src="./cake shop images/brownie2.avif" class="card-img-top" alt="Brownie Cake with Vanilla">
+            <div class="card-body text-center">
+                <h5 class="card-title">Brownie Cake with Vanilla</h5>
+                <h5 style="color: rgb(24, 105, 24);"><b><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;380/-</b></h5>
+                <p style="color: blue;">Rich and indulgent Brownie cake with layers of Brownie goodness.</p>  
+                <h4><span style="font-size: medium;">Rattings</span>&nbsp;&nbsp;<span style="color: rgb(255, 217, 0); font-size: medium;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span></h4>            
+                <button class="btn btn-primary" onclick="addToCart(2, 'Brownie Cake with Vanilla', 380, './cake shop images/brownie2.avif')" style="width: 45%; font-size: small;"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Add to Cart</button>
+                &nbsp;&nbsp;&nbsp;&nbsp; 
+                <a href="#" class="btn btn-primary" style="width: 45%; font-size: small;"><i class="fa-solid fa-basket-shopping"></i>&nbsp;&nbsp;Buy Now</a>
+        </div>
+    </div>
+   </div>
+      
+    <div class="col-md-4">
+      <div class="card">
+          <img src="./cake shop images/brownie3.avif" class="card-img-top" alt="Brownie Cake">
+          <div class="card-body text-center">
+              <h5 class="card-title">Brownie Cake with Fruits</h5>
+              <h5 style="color: rgb(24, 105, 24);"><b><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;450/-</b></h5>
+              <p style="color: blue;">Rich and indulgent Brownie cake with layers of Brownie goodness.</p>  
+              <h4><span style="font-size: medium;">Rattings</span>&nbsp;&nbsp;<span style="color: rgb(255, 217, 0); font-size: medium;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span></h4>            
+              <button class="btn btn-primary" onclick="addToCart(3, 'Brownie Cake with Fruits', 450, './cake shop images/brownie3.avif')" style="width: 45%; font-size: small;"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Add to Cart</button>
+              &nbsp;&nbsp;&nbsp;&nbsp; 
+              <a href="#" class="btn btn-primary" style="width: 45%; font-size: small;"><i class="fa-solid fa-basket-shopping"></i>&nbsp;&nbsp;Buy Now</a>
+      </div>
+  </div>
+  </div>
+      
+  <div class="col-md-4">
+    <div class="card">
+        <img src="./cake shop images/brownie4.jpg" class="card-img-top" alt="Brownie Cake">
+        <div class="card-body text-center">
+            <h5 class="card-title">Brownie with Choco</h5>
+            <h5 style="color: rgb(24, 105, 24);"><b><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;350/-</b></h5>
+            <p style="color: blue;">Rich and indulgent Brownie cake with choco of Brownie goodness.</p>  
+            <h4><span style="font-size: medium;">Rattings</span>&nbsp;&nbsp;<span style="color: rgb(255, 217, 0); font-size: medium;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span></h4>            
+            <button class="btn btn-primary" onclick="addToCart(4, 'Brownie Cake', 350, './cake shop images/brownie4.jpg')" style="width: 45%; font-size: small;"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Add to Cart</button>
+            &nbsp;&nbsp;&nbsp;&nbsp; 
+            <a href="#" class="btn btn-primary" style="width: 45%; font-size: small;"><i class="fa-solid fa-basket-shopping"></i>&nbsp;&nbsp;Buy Now</a>           
+       </div>
+     </div>
+  </div>
+</div>
+</div>
+<br>
+<center><p id="D2">A chocolate cake is the epitome of dessert perfection, a timeless classic that delights taste buds and warms hearts. With its rich, velvety layers infused with deep cocoa flavor, it’s a treat that brings instant joy to any occasion. Whether it’s topped with a glossy ganache, frosted with creamy buttercream, or adorned with fresh berries, a chocolate cake offers endless possibilities for indulgence.</p></center>
+   <center><p style="color: rgb(111, 0, 139); margin-left: 2%;">This dessert isn’t just a sweet treat-it’s a heartfelt indulgence that brings comfort and joy with every slice.</p></center>
+   <hr>
+   <center><button style="font-size: large; margin-left: 2%;"><h1 style="font-family: 'Times New Roman', Times, serif; color: rgb(98, 6, 6);">Chocolate Cake</h1></button></center>
+   <hr>
+   <br>
+   <div class="container">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
+      <div class="col-md-4">
+        <div class="card">
+            <img src="./cake shop images/choco1.jpg" class="card-img-top" alt="Brownie Cake" height="210">
+            <div class="card-body text-center">
+                <h5 class="card-title">2 Layer Chocolate Cake</h5>
+                <h5 style="color: rgb(24, 105, 24);"><b><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;650/-</b></h5>
+                <p style="color: blue;">Two layers of chocolate cake, frosted with choco icing.</p>  
+                <h4><span style="font-size: medium;">Rattings</span>&nbsp;&nbsp;<span style="color: rgb(255, 217, 0); font-size: medium;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span></h4>            
+                <button class="btn btn-primary" onclick="addToCart(5, '2 Layer Chocolate Cake', 650, './cake shop images/choco1.jpg')" style="width: 45%; font-size: small;"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Add to Cart</button>
+                &nbsp;&nbsp;&nbsp;&nbsp; 
+                <a href="#" class="btn btn-primary" style="width: 45%; font-size: small;"><i class="fa-solid fa-basket-shopping"></i>&nbsp;&nbsp;Buy Now</a>
+        </div>
+    </div>
+    </div>
+      <div class="col-md-4">
+        <div class="card">
+            <img src="./cake shop images/choco2.jpg" class="card-img-top" alt="Brownie Cake with Vanilla" height="210">
+            <div class="card-body text-center">
+                <h5 class="card-title">Choco Choco</h5>
+                <h5 style="color: rgb(24, 105, 24);"><b><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;420/-</b></h5>
+                <p style="color: blue;">Very Delicious and creamy Chocolate cake for Sweet goodness.</p>  
+                <h4><span style="font-size: medium;">Rattings</span>&nbsp;&nbsp;<span style="color: rgb(255, 217, 0); font-size: medium;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span></h4>            
+                <button class="btn btn-primary" onclick="addToCart(6, 'choco choco', 420, './cake shop images/choco2.jpg')" style="width: 45%; font-size: small;"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Add to Cart</button>
+                &nbsp;&nbsp;&nbsp;&nbsp; 
+                <a href="#" class="btn btn-primary" style="width: 45%; font-size: small;"><i class="fa-solid fa-basket-shopping"></i>&nbsp;&nbsp;Buy Now</a>
+        </div>
+    </div>
+   </div>
+      
+    <div class="col-md-4">
+      <div class="card">
+          <img src="./cake shop images/choco3.jpg" class="card-img-top" alt="Brownie Cake" height="210">
+          <div class="card-body text-center">
+              <h5 class="card-title">Chocolate Cakes</h5>
+              <h5 style="color: rgb(24, 105, 24);"><b><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;550/-</b></h5>
+              <p style="color: blue;">Very Delicious and creamy Chocolate cake for Sweet goodness.</p>  
+              <h4><span style="font-size: medium;">Rattings</span>&nbsp;&nbsp;<span style="color: rgb(255, 217, 0); font-size: medium;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span></h4>            
+              <button class="btn btn-primary" onclick="addToCart(7, 'Chocolate Cakes', 550, './cake shop images/choco3.jpg')" style="width: 45%; font-size: small;"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Add to Cart</button>
+              &nbsp;&nbsp;&nbsp;&nbsp; 
+              <a href="#" class="btn btn-primary" style="width: 45%; font-size: small;"><i class="fa-solid fa-basket-shopping"></i>&nbsp;&nbsp;Buy Now</a>
+      </div>
+  </div>
+  </div>
+      
+  <div class="col-md-4">
+    <div class="card">
+        <img src="./cake shop images/choco4.jpg" class="card-img-top" alt="Brownie Cake" height="210">
+        <div class="card-body text-center">
+            <h5 class="card-title">Choco choki</h5>
+            <h5 style="color: rgb(24, 105, 24);"><b><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;460/-</b></h5>
+            <p style="color: blue;">Rich and indulgent chocolate cake with choco of goodness.</p>  
+            <h4><span style="font-size: medium;">Rattings</span>&nbsp;&nbsp;<span style="color: rgb(255, 217, 0); font-size: medium;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span></h4>            
+            <button class="btn btn-primary" onclick="addToCart(8, 'Choco choki', 460, './cake shop images/choco4.jpg')" style="width: 45%; font-size: small;"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Add to Cart</button>
+            &nbsp;&nbsp;&nbsp;&nbsp; 
+            <a href="#" class="btn btn-primary" style="width: 45%; font-size: small;"><i class="fa-solid fa-basket-shopping"></i>&nbsp;&nbsp;Buy Now</a>           
+       </div>
+     </div>
+  </div>
+</div>
+</div>
+<br>
+<center><p id="D3">Red velvet cake is a dessert that captivates both the eyes and the taste buds with its stunning crimson hue and luxurious texture. This iconic treat combines the subtle tang of buttermilk with a hint of cocoa, creating a flavor profile that’s rich yet delicately balanced.</p></center>
+<center><p style="color: rgb(111, 0, 139); margin-left: 2%;">This dessert isn’t just a sweet treat-it’s a heartfelt indulgence that brings comfort and joy with every slice.</p></center> 
+<hr>
+<center><button style="font-size: large; margin-left: 2%;"><h1 style="font-family: 'Times New Roman', Times, serif; color: rgb(98, 6, 6);">Red Velvet Cakes</h1></button></center>
+  <hr> <br>
+   <div class="container">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
+      <div class="col-md-4">
+        <div class="card">
+            <img src="./cake shop images/red-velvet-cake-4917734_1280.jpg" class="card-img-top" alt="Brownie Cake" height="210">
+            <div class="card-body text-center">
+                <h5 class="card-title">Red Velvet Cake</h5>
+                <h5 style="color: rgb(24, 105, 24);"><b><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;330/-</b></h5>
+                <p style="color: blue;">Classic and fluffy velvet cake with a hint of sweetness.</p>  
+                <h4><span style="font-size: medium;">Rattings</span>&nbsp;&nbsp;<span style="color: rgb(255, 217, 0); font-size: medium;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span></h4>            
+                <button class="btn btn-primary" onclick="addToCart(9, 'Red Velvet Cake', 330, './cake shop images/red-velvet-cake-4917734_1280.jpg')" style="width: 45%; font-size: small;"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Add to Cart</button>
+                &nbsp;&nbsp;&nbsp;&nbsp; 
+                <a href="#" class="btn btn-primary" style="width: 45%; font-size: small;"><i class="fa-solid fa-basket-shopping"></i>&nbsp;&nbsp;Buy Now</a>
+        </div>
+    </div>
+    </div>
+      <div class="col-md-4">
+        <div class="card">
+            <img src="./cake shop images/red3.jpg" class="card-img-top" alt="Brownie Cake with Vanilla" height="210">
+            <div class="card-body text-center">
+                <h5 class="card-title">Red velvet with Berries</h5>
+                <h5 style="color: rgb(24, 105, 24);"><b><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;420/-</b></h5>
+                <p style="color: blue;">A Red Velvet Cake With White Icing And Strawberries.</p>  
+                <h4><span style="font-size: medium;">Rattings</span>&nbsp;&nbsp;<span style="color: rgb(255, 217, 0); font-size: medium;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span></h4>            
+                <button class="btn btn-primary" onclick="addToCart(10, 'Red Velvet with Berries', 420, './cake shop images/red3.jpg')" style="width: 45%; font-size: small;"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Add to Cart</button>
+                &nbsp;&nbsp;&nbsp;&nbsp; 
+                <a href="#" class="btn btn-primary" style="width: 45%; font-size: small;"><i class="fa-solid fa-basket-shopping"></i>&nbsp;&nbsp;Buy Now</a>
+        </div>
+    </div>
+   </div>
+      
+    <div class="col-md-4">
+      <div class="card">
+          <img src="./cake shop images/red5.avif" class="card-img-top" alt="Brownie Cake" height="210">
+          <div class="card-body text-center">
+              <h5 class="card-title">Red velvet with Heart</h5>
+              <h5 style="color: rgb(24, 105, 24);"><b><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;580/-</b></h5>
+              <p style="color: blue;">Velvet cake with a few tablespoons of red food coloring mixed in.</p>  
+              <h4><span style="font-size: medium;">Rattings</span>&nbsp;&nbsp;<span style="color: rgb(255, 217, 0); font-size: medium;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span></h4>            
+              <button class="btn btn-primary" onclick="addToCart(11, 'Red Velvet With Heart', 580, './cake shop images/red5.avif')" style="width: 45%; font-size: small;"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Add to Cart</button>
+              &nbsp;&nbsp;&nbsp;&nbsp; 
+              <a href="#" class="btn btn-primary" style="width: 45%; font-size: small;"><i class="fa-solid fa-basket-shopping"></i>&nbsp;&nbsp;Buy Now</a>
+      </div>
+  </div>
+  </div>
+      
+  <div class="col-md-4">
+    <div class="card">
+        <img src="./cake shop images/red6.webp" class="card-img-top" alt="Brownie Cake" height="210">
+        <div class="card-body text-center">
+            <h5 class="card-title">Red Velvet With Rose</h5>
+            <h5 style="color: rgb(24, 105, 24);"><b><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;320/-</b></h5>
+            <p style="color: blue;">Creamy and smooth red velvet with a buttery crust.</p>  
+            <h4><span style="font-size: medium;">Rattings</span>&nbsp;&nbsp;<span style="color: rgb(255, 217, 0); font-size: medium;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span></h4>            
+            <button class="btn btn-primary" onclick="addToCart(12, 'Red Velvet With Rose', 320, './cake shop images/red6.webp')" style="width: 45%; font-size: small;"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Add to Cart</button>
+            &nbsp;&nbsp;&nbsp;&nbsp; 
+            <a href="#" class="btn btn-primary" style="width: 45%; font-size: small;"><i class="fa-solid fa-basket-shopping"></i>&nbsp;&nbsp;Buy Now</a>           
+       </div>
+     </div>
+  </div>
+</div>
+</div>
+<br>
+<center><p id="D4">Black and White Forest cake is a striking twist on the classic dessert, blending the indulgent richness of dark chocolate with the creamy elegance of white chocolate. This visually stunning cake alternates layers of moist chocolate sponge and velvety white chocolate mousse, creating a harmonious balance of bold and delicate flavors.</p></center>
+<center><p style="color: rgb(111, 0, 139); margin-left: 2%;">This dessert isn’t just a sweet treat-it’s a heartfelt indulgence that brings comfort and joy with every slice.</p></center>  
+<hr>
+<center><button style="font-size: large;"><h1 style="font-family: 'Times New Roman', Times, serif; color: rgb(98, 6, 6);">Blach & White forest Cakes</h1></button></center>
+  <hr> <br>
+   <div class="container">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
+      <div class="col-md-4">
+        <div class="card">
+            <img src="./cake shop images/white2.jpg" class="card-img-top" alt="Brownie Cake" height="210">
+            <div class="card-body text-center">
+                <h5 class="card-title">White Forest Cake</h5>
+                <h5 style="color: rgb(24, 105, 24);"><b><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;600/-</b></h5>
+                <p style="color: blue;">Creamy and smooth White Forest cake with a butter crust.</p>  
+                <h4><span style="font-size: medium;">Rattings</span>&nbsp;&nbsp;<span style="color: rgb(255, 217, 0); font-size: medium;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span></h4>            
+                <button class="btn btn-primary" onclick="addToCart(13, 'White Forest Cake', 600, './cake shop images/white2.jpg')" style="width: 45%; font-size: small;"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Add to Cart</button>
+                &nbsp;&nbsp;&nbsp;&nbsp; 
+                <a href="#" class="btn btn-primary" style="width: 45%; font-size: small;"><i class="fa-solid fa-basket-shopping"></i>&nbsp;&nbsp;Buy Now</a>
+        </div>
+    </div>
+    </div>
+      <div class="col-md-4">
+        <div class="card">
+            <img src="./cake shop images/black3.jpg" class="card-img-top" alt="Brownie Cake with Vanilla" height="210">
+            <div class="card-body text-center">
+                <h5 class="card-title">Black Forest Cake</h5>
+                <h5 style="color: rgb(24, 105, 24);"><b><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;750/-</b></h5>
+                <p style="color: blue;">Creamy and smooth Black Forest cake with a butter crust.</p>  
+                <h4><span style="font-size: medium;">Rattings</span>&nbsp;&nbsp;<span style="color: rgb(255, 217, 0); font-size: medium;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span></h4>            
+                <button class="btn btn-primary" onclick="addToCart(14, 'Black Forest Cake', 750, './cake shop images/black3.jpg')" style="width: 45%; font-size: small;"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Add to Cart</button>
+                &nbsp;&nbsp;&nbsp;&nbsp; 
+                <a href="#" class="btn btn-primary" style="width: 45%; font-size: small;"><i class="fa-solid fa-basket-shopping"></i>&nbsp;&nbsp;Buy Now</a>
+        </div>
+    </div>
+   </div>
+      
+    <div class="col-md-4">
+      <div class="card">
+          <img src="./cake shop images/white4.webp" class="card-img-top" alt="Brownie Cake" height="210">
+          <div class="card-body text-center">
+              <h5 class="card-title">White Forest with Heart</h5>
+              <h5 style="color: rgb(24, 105, 24);"><b><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;780/-</b></h5>
+              <p style="color: blue;">Classic and fluffy white forest cake with a hint of sweetness.</p>  
+              <h4><span style="font-size: medium;">Rattings</span>&nbsp;&nbsp;<span style="color: rgb(255, 217, 0); font-size: medium;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span></h4>            
+              <button class="btn btn-primary" onclick="addToCart(15, 'White Forest With Heart', 780, './cake shop images/white4.webp')" style="width: 45%; font-size: small;"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Add to Cart</button>
+              &nbsp;&nbsp;&nbsp;&nbsp; 
+              <a href="#" class="btn btn-primary" style="width: 45%; font-size: small;"><i class="fa-solid fa-basket-shopping"></i>&nbsp;&nbsp;Buy Now</a>
+      </div>
+  </div>
+  </div>
+      
+  <div class="col-md-4">
+    <div class="card">
+        <img src="./cake shop images/black8.avif" class="card-img-top" alt="Brownie Cake" height="210">
+        <div class="card-body text-center">
+            <h5 class="card-title">Black Forest with Heart</h5>
+            <h5 style="color: rgb(24, 105, 24);"><b><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;820/-</b></h5>
+            <p style="color: blue;">Classic and fluffy Black forest cake with a hint of sweetness.</p>  
+            <h4><span style="font-size: medium;">Rattings</span>&nbsp;&nbsp;<span style="color: rgb(255, 217, 0); font-size: medium;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span></h4>            
+            <button class="btn btn-primary" onclick="addToCart(16, 'Black Forest with Heart', 820, './cake shop images/black8.avif')" style="width: 45%; font-size: small;"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Add to Cart</button>
+            &nbsp;&nbsp;&nbsp;&nbsp; 
+            <a href="#" class="btn btn-primary" style="width: 45%; font-size: small;"><i class="fa-solid fa-basket-shopping"></i>&nbsp;&nbsp;Buy Now</a>           
+       </div>
+     </div>
+  </div>
+</div>
+</div>
+<br><br>
+<center>
+  <h3 style="color: crimson;">Dear Customer Thanks For Visiting My Web Page...<span style="color: gold;"><i class="fa-solid fa-heart"></i>&nbsp;<i class="fa-solid fa-heart"></i>&nbsp;<i class="fa-solid fa-heart"></i></span></h3>
+</center>
+<br>
+    <div class="container-fluid" style="background-color: rgba(0, 0, 0, 0.5); color: black; font-family: 'Times New Roman', Times, serif;">
+      <div class="row">
+        <div class="col-lg-2 col-md-6 mb-4" style="margin-top: 50px;">
+          <img src="./cake shop images/Red_and_Yellow_Catering_Flat_Illustrative_Food_Place_Logo-removebg-preview.png" alt="" height="200" width="200">
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        <!-- Links Section -->
+        <div class="col-lg-2 col-md-6" style="margin-top: 25px;">
+          <h5 class="sambu"><span style="color: black; font-size: x-large;">Cakes World</span></h5>
+          <br>
+          <ul class="list-unstyled">
+            <li class="sambu"><i class="fa-solid fa-cake-candles"></i>&nbsp;&nbsp;&nbsp;&nbsp;Its more delicious & Ist moist free.</li>
+            <li class="sambu"><i class="fa-solid fa-cake-candles"></i>&nbsp;&nbsp;&nbsp;&nbsp;Focus on special occasions & tasty.</li>
+            <li class="sambu"><i class="fa-solid fa-cake-candles"></i>&nbsp;&nbsp;&nbsp;&nbsp;A slice of heaven & Delight in every bite.</li>
+            <li class="sambu"><i class="fa-solid fa-cake-candles"></i>&nbsp;&nbsp;&nbsp;&nbsp;Promotions and discounts for cakes world.</li>
+          </ul>
+        </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+        <!-- Contact Section -->
+        <div class="col-lg-2  col-md-6 mb-4" style="margin-top: 25px;">
+          <h5 class="sambu"><span style="color: black; font-size: x-large;">Contact Us</span></h5>
+          <br>
+          <p class="sambu">Email:  dineshdinesh42096@gmail.com</p>
+          <p class="sambu">Phone: <br>+91-960 023 1788</p>
+        </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <div class="col-lg-2 col-md-6" style="margin-top: 25px;">
+              <h5 class="sambu"><span style="color: black; font-size: x-large;">Follow us on</span></h5>
+              <br>
+            <span style="font-size: x-large;">
+            <i class="fa-brands fa-facebook"></i>&nbsp;&nbsp;
+            <i class="fa-brands fa-instagram"></i>&nbsp;&nbsp;
+            <i class="fa-brands fa-whatsapp"></i>&nbsp;&nbsp;
+            <i class="fa-brands fa-twitter"></i>&nbsp;&nbsp;
+            <i class="fa-brands fa-google-play"></i>
+          </span>
+          </div>
+        </div>
+        
+        <div class="container-fluid">
+          <div class="row"> 
+            <div class="col">
+              <div class="text-center p-3">
+                <b><span style="font-size: large; font-family: 'Times New Roman', Times, serif;">© 2024 Cakes World</span></b>
+              </div>
+            </div>
+          </div>
+         </div>
+</div>
+
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', updateCartCount);
+
+function changeQuantity(btn) {
+  const quantitySpan = btn.parentNode.querySelector('.quantity');
+  let quantity = parseInt(quantitySpan.innerText);
+
+  if (btn.innerText === '+') {
+    quantity++;
+  } else if (quantity > 1) {
+    quantity--;
+  }
+
+  quantitySpan.innerText = quantity;
+}
+
+function addToCart(id, name, price, img) {
+    const cart = JSON.parse(localStorage.getItem('cartData')) || [];
+
+    const existingItem = cart.find(item => item.id === id);
+    if (existingItem) {
+        existingItem.quantity++;
+    } else {
+        cart.push({ id, name, price, quantity: 1, img });
+    }
+
+    localStorage.setItem('cartData', JSON.stringify(cart));
+    alert(`${name} has been added to your cart!`);
+
+    // Update the cart count on the navbar
+    updateCartCount();
+}
+
+function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cartData')) || [];
+    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+    document.getElementById('cartCount').innerText = totalItems;
+}
+
+
+
+// function checkResponsive() {
+//   const width = window.innerWidth;
+
+// if(width<=768){
+//   console.log("small Screen(mobileview)");
+// }
+// else if(width<=1024){
+//   console.log("medium Screen(tabletview)");
+// }
+// else{
+//   console.log("medium Screen(tabletview)");
+// }
+// }
+    </script>
+   </body>
+   </html>
+   
